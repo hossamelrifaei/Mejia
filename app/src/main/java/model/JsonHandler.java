@@ -2,13 +2,19 @@ package model;
 
 import android.content.Context;
 
+
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
+
+import javax.json.JsonReader;
 
 /**
  * Created by Hossam on 4/6/2016.
@@ -46,6 +52,8 @@ public class JsonHandler {
         Gson gson = new Gson();
         Type DataType = new TypeToken<Data>() {
         }.getType();
+
+        json=json.replace(" ","");
 
         Data data = gson.fromJson(json, DataType);
         return data;
